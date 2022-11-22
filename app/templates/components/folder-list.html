@@ -1,0 +1,54 @@
+{% for folder in folders %}
+
+    <div class="page">
+
+        <span>
+
+            {{ folder.title }}
+
+        </span>
+
+        <div class="edit-notepad-btn">
+
+            E
+
+        </div>
+
+    </div>
+
+{% endfor %}
+
+
+<div class="folder-form">
+
+    <div class="folder-form-wrapper">
+
+        <div class="close-folder-form-btn">
+
+            X
+
+        </div>
+
+        <span class="section-title">
+
+            Новый блокнот
+
+        </span>
+
+        <form>`
+
+            {% csrf_token %}
+
+            <input type="text" name="title">
+
+            <button class='create-folder-btn' hx-post="{% url 'app:create-folder' %}" hx-target=".folders">
+
+                Создать
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>

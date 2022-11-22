@@ -1,0 +1,231 @@
+body, html {
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background: #EBEBEF;
+
+    font-family: Comfortaa;
+
+}
+
+
+
+.top-nav {
+
+    position: relative;
+    top: 20px;
+    left: 5%;
+
+    width: 90%;
+    height: 55px;
+
+    border-radius: 50px;
+
+    background: #EBEBEF;
+    box-shadow:  3px 3px 10px #b5b5b8,
+                -3px -3px 10px #ffffff;    
+    display: flex;
+    align-items: center;
+
+    .toggle-side-nav {
+
+        width: 40px;
+        height: 40px;
+
+
+        border-radius: 50px;
+
+        cursor: pointer;
+
+    }
+
+
+    .brand {
+
+        h1 {
+
+            margin: 0;
+
+        }
+
+    }
+
+}
+
+.side-nav {
+
+    position: relative;
+    top: 60px;
+
+    width: 250px;
+
+    .pages {
+
+        
+        .page {
+
+            height: 45px;
+            width: 45px;
+
+            margin-left: 15px;
+
+            border-radius: 50px;
+
+            background: #EBEBEF;
+
+            margin-bottom: 15px;
+
+            box-shadow:  2px 2px 4px #b3b3b3,
+             -2px -2px 4px #ffffff;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease-in-out;
+
+            span {
+
+                margin: 0 0 0 20px;
+
+                display: none;
+
+            }
+
+
+        }
+
+    }
+
+    .folder-form {
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: rgba(0, 0, 0 ,0.5);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        transition: all 0.25s ease-in-out;
+
+        z-index: -1;
+        opacity: 0;
+
+        .folder-form-wrapper {
+
+            height: auto;
+            width: 300px;
+
+            border-radius: 30px;
+            background: #EBEBEF;
+
+            padding: 15px;
+
+            .section-title {
+
+                position: relative;
+                bottom: 30px;
+                left: 5px;
+
+                font-weight: bold;
+
+                font-size: 20px;
+
+            }
+
+            .close-folder-form-btn {
+
+                position: relative;
+                left: 265px;
+                bottom: 0px;
+
+                width: 35px;
+                height: 35px;
+
+                border-radius: 50px;
+
+                box-shadow:  2px 2px 4px #b3b3b3,
+                    -2px -2px 4px #ffffff;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                cursor: pointer;
+
+            }
+            
+            .new-notepad {
+
+                position: relative;
+
+                left: 2.5%;
+
+                width: 95%;
+
+                height: 40px;
+
+                border-radius: 50px;
+
+                box-shadow:  2px 2px 4px #b3b3b3,
+                    -2px -2px 4px #ffffff;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                cursor: pointer;
+                
+           
+
+                span {
+
+                    font-size: 30px;
+                    
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+}
+
+.side-nav.open {
+
+    .page {
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        span {
+
+            display: block;
+    
+        }
+
+    }
+
+}
+
+
+.main{
+
+    position: relative;
+    left: 20%;
+
+}

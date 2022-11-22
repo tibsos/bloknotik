@@ -1,0 +1,266 @@
+{% load static %}
+{% load compress %}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <title>
+
+            Блокнотик
+
+        </title>
+
+        {% compress css %}
+
+            <link rel="stylesheet" href="{% static 'scss/app/home.scss' %}" type="text/x-scss">
+
+        {% endcompress %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+
+
+    </head>
+
+    <body>
+        
+        <div class="top-nav">
+
+            <div class="toggle-side-nav">
+
+                -
+
+            </div>
+
+            <div class="brand">
+
+                <!-- Logo svg -->
+
+                <h1>
+
+                    Блокнотик
+
+                </h1>
+
+            </div>
+
+            <div class="search-field">
+
+                <div class="icon">
+
+
+                </div>
+
+                <input type="text" name='query' class='search-query' />
+
+            </div>
+
+            <div class="right-buttons">
+
+                <div class="note-view">
+
+
+
+                </div>
+    
+                <div class="settings">
+    
+                    
+    
+                </div>
+
+            </div>
+
+            <div class="profile">
+
+                {% if profile.avatar %}
+
+                    <img src="{{ profile.avatar.url }}" />
+
+                {% else %}
+
+                    <h4>
+
+                        {{ profile.name }}
+
+                    </h4>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+        
+
+        <div class="side-nav">
+
+            <div class="pages">
+
+                <div class="page">
+
+                    <!-- SVG -->
+
+
+                    <span>
+
+                        Заметки
+
+                    </span>
+                    
+
+                </div>
+
+                <div class="folders">
+
+                    {% include 'components/folder-list.html' %}
+
+                </div>
+
+                <div class="page" id="create-folder">
+
+                    <div>
+
+                        +
+
+                    </div>
+
+                    <span>
+
+                        Создать блокнот
+
+                    </span>
+
+                </div>
+
+
+                <div class="page">
+
+                    <!-- SVG -->
+                    
+                    <span>
+
+                        Архив
+
+                    </span>
+
+                </div>
+
+                <div class="page">
+
+                    <!-- SVG -->
+
+                    <span>
+
+                        Корзина
+
+                    </span>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div class="create-note-field">
+
+                
+                <span>
+
+                    Я помню чудное мгновение...
+
+                </span>
+
+
+                <div class="add checklist">
+
+                    C
+
+                </div>
+
+                <div class="add image">
+
+                    I
+
+                </div>
+
+                <div class="create-note-field-expanded">
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Forms -->
+
+        
+
+    </body>
+
+    <style>
+
+        @font-face {
+            font-family: Comfortaa;
+            src: url("{% static 'fonts/Comfortaa.ttf' %}");
+        }
+
+    </style>
+
+    <script>
+
+        $(".toggle-side-nav").click(function() {
+
+            $(".side-nav").toggleClass('open');
+
+        })
+
+        $('.side-nav').on('mouseenter', function() {
+
+            $(".side-nav").addClass('open');
+
+        })
+
+        $('.side-nav').on('mouseleave', function() {
+
+            $(".side-nav").removeClass('open');
+
+        })
+
+        $("#create-folder").click(function () {
+
+            $('.folder-form').css({
+
+                "opacity": 1,
+                "z-index": 5,
+
+            })
+
+        })
+
+        $('.close-folder-form-btn, .folder-form, .create-folder-btn').click(function(e) {
+
+            if (e.target == this){
+
+                $('.folder-form').css({
+
+                    "opacity": 0,
+                    "z-index": -1,
+
+                })
+
+            }
+
+        });
+
+    </script>
+
+</html>
