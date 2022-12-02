@@ -2,7 +2,7 @@
 
     <h1>
 
-        © <i><span id="name">Блокнотик</span> 2022</i>                         
+        © <i><span class="name">Блокнотик</span> 2022</i>                         
 
     </h1>
 
@@ -49,9 +49,9 @@
 
     setInterval( function () {
 
-        $('#name').css({
+        $('.name').css({
 
-            color: "#" + ((Math.random() * 16777215) | 0).toString(16),
+            color: randomColor(),
 
         }) 
 

@@ -25,6 +25,7 @@
         {% compress css %}
 
             <link rel="stylesheet" href="{% static 'scss/base/landing.scss' %}" type="text/x-scss">
+            <link rel="stylesheet" href="{% static 'scss/base/navs/top-nav.scss' %}" type="text/x-scss">
             <link rel="stylesheet" href="{% static 'scss/base/navs/bottom-nav.scss' %}" type="text/x-scss">
 
         {% endcompress %}
@@ -134,11 +135,13 @@
 
     </style>
 
+    <script>
 
+        function randomColor(){
 
+            return "#" + ((Math.random() * 16777215) | 0).toString(16);
 
-        /* Circles animation */
-        colors = ['red', 'green', 'orange', 'purple', 'pink', 'yellow', '#f28500', 'cyan', 'blue', '#FF1744', '#1A237E', '#00C853']
+        }
 
         function randomNumFromInterval(min, max) {
 
@@ -146,112 +149,78 @@
 
         }
 
-        /* Big circle */
+        const delay = ms => new Promise(res => setTimeout(res, ms));
 
-        bigSmall = false;
+        /* Circle animation */
 
-        setInterval(function() {
+        const animateCircle = async (scale) =>  {
 
-            color = colors[Math.floor(colors.length * Math.random())];
+            if (scale == 'big') {
 
-            while (color === $('.big').css('background-color')){
-
-                color = colors[Math.floor(colors.length * Math.random())];
-   
-            }
-
-            $('.big').css('background-color', color)
-            
-            if (bigSmall === true) {
-
-                bigSmall = false;
-
-                scale = randomNumFromInterval(1, 1.15);
-
-                $('.big').css('transform', 'scale(' + scale + ')')
-
-            } else {
-
-                bigSmall = true;
-
-                scale = randomNumFromInterval(0.8, 0.95);
-
-                $('.big').css('transform', 'scale(' + scale + ')')
-
-            }
-
-
-        }, 2500)
-
-        mediumSmall = false;
-
-        setInterval(function() {
-
-            color = colors[Math.floor(colors.length * Math.random())];
-
-            while (color === $('.medium').css('background-color')){
-
-                color = colors[Math.floor(colors.length * Math.random())];
-   
-            }
-
-            $('.medium').css('background-color', color)
-            
-            if (mediumSmall === true) {
-
-                mediumSmall = false;
+                $('.big').css('background-color', randomColor());
 
                 scale = randomNumFromInterval(1, 1.3);
+                $('.big').css('transform', 'scale(' + scale + ')')
+                
+                await delay(3000);
 
+                $('.big').css('background-color', randomColor());
+
+                scale = randomNumFromInterval(0.7, 1);
+                $('.big').css('transform', 'scale(' + scale + ')')
+
+
+            } else if (scale == 'medium') {
+
+                $('.medium').css('background-color', randomColor());
+
+                scale = randomNumFromInterval(1, 1.6);
+                $('.medium').css('transform', 'scale(' + scale + ')')
+                
+                await delay(1500);
+
+                $('.medium').css('background-color', randomColor());
+
+                scale = randomNumFromInterval(0.6, 1);
                 $('.medium').css('transform', 'scale(' + scale + ')')
 
             } else {
 
-                mediumSmall = true;
+                $('.small').css('background-color', randomColor());
 
-                scale = randomNumFromInterval(0.65, 0.9);
+                scale = randomNumFromInterval(1, 1.9);
+                $('.small').css('transform', 'scale(' + scale + ')')
+                
+                await delay(750);
 
-                $('.medium').css('transform', 'scale(' + scale + ')')
+                $('.small').css('background-color', randomColor());
 
+                scale = randomNumFromInterval(0.1, 1);
+                $('.small').css('transform', 'scale(' + scale + ')')
+                
             }
 
+        }
 
-        }, 1500)
-
-        smallSmall = false;
+        
 
         setInterval(function() {
 
-            color = colors[Math.floor(colors.length * Math.random())];
+            animateCircle('big');
 
-            while (color === $('.small').css('background-color')){
+        }, 6000)
 
-                color = colors[Math.floor(colors.length * Math.random())];
-   
-            }
+        setInterval(function() {
 
-            $('.small').css('background-color', color)
-            
-            if (smallSmall === true) {
+            animateCircle('medium');
 
-                smallSmall = false;
+        }, 3000)
 
-                scale = randomNumFromInterval(0.4, 0.95);
+        setInterval(function() {
 
-                $('.small').css('transform', 'scale(' + scale + ')')
+            animateCircle('small');
 
-            } else {
-
-                smallSmall = true;
-
-                scale = randomNumFromInterval(1, 1.5);
-
-                $('.small').css('transform', 'scale(' + scale + ')')
-
-            }
-
-
-        }, 750)
+        }, 1500)
 
 
     </script>
