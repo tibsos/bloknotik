@@ -1,50 +1,60 @@
-<div class='bottom-nav'>
+<div class="contents">
+
+    <h1>
+
+        © <i><span id="name">Блокнотик</span> 2022</i>                         
+
+    </h1>
+
+    <ul>
+
+        <li>
+
+            <a href="{% url 'base:terms' %}" target="_blank">
+
+                Информация
+
+            </a>
+
+        </li>
+
     
-    <div class="contents">
+        <li>
 
-        <h1>
+            <a href="{% url 'base:plans' %}" target="_blank">
 
-            © Блокнотик 2022                        
+                Тарифы
 
-        </h1>
+            </a>
 
-        <ul>
+        </li>
 
-            <li>
+        <li>
 
-                <a href="{% url 'base:terms' %}" target="_blank">
+            <a href="{% url 'base:contact' %}" target="_blank">
 
-                    Информация
+                Обратная связь
 
-                </a>
+            </a>
 
-            </li>
+        </li>
 
         
-            <li>
 
-                <a href="{% url 'base:plans' %}" target="_blank">
-
-                    Тарифы
-
-                </a>
-
-            </li>
-
-            <li>
-
-                <a href="{% url 'base:contact' %}" target="_blank">
-
-                    Обратная связь
-
-                </a>
-
-            </li>
-
-            
-
-        </ul>
-
-    </div>
+    </ul>
 
 </div>
+
+<script>
+
+    setInterval( function () {
+
+        $('#name').css({
+
+            color: "#" + ((Math.random() * 16777215) | 0).toString(16),
+
+        }) 
+
+    }, 2500)
+
+</script>

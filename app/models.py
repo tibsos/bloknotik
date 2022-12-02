@@ -43,25 +43,6 @@ class Folder(m.Model):
 
         ordering = ['updated_at']
 
-class Task(m.Model):
-
-    user = m.ForeignKey(User, on_delete = m.CASCADE)
-
-    uid = m.UUIDField(default = u4)
-
-    title = m.CharField(max_length = 500, blank = True)
-
-    completed = m.BooleanField(default = False)
-
-    created_at = m.DateTimeField(auto_now_add = True)
-    updated_at = m.DateTimeField(auto_now = True)
-
-    def __str__(self):
-
-        if self.title:
-
-            return f"{self.title} by {self.user.username}"
-
 class Image(m.Model):
 
     user = m.ForeignKey(User, on_delete = m.CASCADE)
@@ -104,15 +85,14 @@ class Note(m.Model):
 
     uid = m.UUIDField(default = u4)
 
-    title = m.CharField(max_length = 1000)
-    content = m.TextField()
+    title = m.CharField(max_length = 1000, blank = True, null = True)
+    content = m.TextField(blank = True, null = True)
 
-    background_color = m.CharField(max_length = 7)
-    background_image = m.ForeignKey(Background, on_delete = m.DO_NOTHING, null = True)
+    color = m.CharField(max_length = 7, blank = True)
+    background = m.ForeignKey(Background, on_delete = m.DO_NOTHING, null = True)
 
     folders = m.ManyToManyField(Folder, blank = True)
     images = m.ManyToManyField(Image, blank = True)
-    tasks = m.ManyToManyField(Task, blank = True)
 
     archived = m.BooleanField(default = False)
     deleted = m.BooleanField(default = False)

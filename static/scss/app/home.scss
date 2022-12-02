@@ -240,7 +240,7 @@ input:focus {
 
     height: 80%;
 
-    bottom: 360px;
+    bottom: 170px;
 
     grid-template-rows: 40px;
     
@@ -262,6 +262,8 @@ input:focus {
 
         box-shadow:  2px 2px 4px #b9b9b7,
              -2px -2px 4px #ffffff;
+
+ 
 
         .condensed {
 
@@ -522,9 +524,102 @@ input:focus {
 
         position: relative;
         top: 50px;
+        left: 100px;
 
-        height: 50%;
-        width: 100px;
+        height: 80%;
+        width: 100%;
+
+
+
+        .note {
+
+            position: relative;
+
+            width: 250px;
+            min-height: 120px;
+
+            display: inline-block;
+
+            margin: 0 20px 0 0;
+
+            border-radius: 30px;
+
+            box-shadow:  4px 4px 15px #b9b9b7,
+                        -4px -4px 15px #ffffff;
+
+
+            cursor: pointer;
+
+            .actions {
+
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+
+                div {
+
+                    width: 33px;
+                    height: 33px;
+
+                    margin-right: 5px;
+
+                    display: inline-block;
+
+                    cursor: pointer;
+
+                    border-radius: 100px;
+                    
+                    box-shadow:  2px 2px 4px #b9b9b7,
+                        -2px -2px 4px #ffffff;
+
+
+                }
+
+            }
+
+
+        }
+
+        .change-note-background-form {
+
+            position: absolute;
+
+            width: 500px;
+            height: 90px;
+
+            border: 1px solid green;
+
+            .colors {
+
+                position: absolute;
+
+                height: 50%;
+
+                border: 1px solid blue;
+
+                div {
+
+                    width: 30px;
+                    height: 30px;     
+
+                    border-radius: 100px;
+                    
+                    box-shadow:  2px 2px 4px #b9b9b7,
+                        -2px -2px 4px #ffffff;
+
+                    cursor: pointer;
+
+                }
+
+                .color {
+
+                    
+
+                }
+
+            }
+
+        }
 
     }
 

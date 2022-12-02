@@ -1,0 +1,5 @@
+{% for image in note.images.all %}
+
+    <img src="{{ image.file.url }}">
+
+{% endfor %}

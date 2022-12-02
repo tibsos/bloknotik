@@ -182,7 +182,7 @@
 
                         <div class='title'>
     
-                            <input type="text" id="new-note-title" placeholder='Я помню чудное мгновение...' />
+                            <input name="title" type="text" id="new-note-title" placeholder='Я помню чудное мгновение...' />
         
                         </div>
                         
@@ -309,7 +309,8 @@
                         <div class='content'>
     
                             <div contenteditable id="new-note-content" placeholder='Я помню чудное мгновение...'></div>
-        
+                            <input type="text" name="content" id="new-note-content-input" hidden>
+
                         </div>
 
                         <div class="create-btn-wrapper">
@@ -331,9 +332,15 @@
 
             <div class="notes">
 
-                x
+                {% include 'components/notes.html' %}
 
-            </div>
+            </div> 
+
+        </div>
+
+        <div class="current-note">
+
+            {% include 'components/note.html' %}
 
         </div>
 
@@ -354,6 +361,24 @@
     </style>
 
     <script>
+
+        function addImage() {
+
+            $('#image-file').click()
+
+        }
+
+        document.body.addEventListener('htmx:configRequest', (event) => {
+
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+
+        })
+
+        $('#new-note-content').change(function() {
+
+            $('#new-note-content-input').val(($('#new-note-content').html()))
+
+        })
 
         /* RTE */
 
@@ -496,7 +521,7 @@
 
         });
 
-        $('.collapse-note-form').click(function() {
+        $('.collapse-note-form, .create-note-btn').click(function() {
 
             $('.create-note-field').css({
 

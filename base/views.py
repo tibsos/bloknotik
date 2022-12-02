@@ -6,6 +6,10 @@ def landing(request):
 
     c = {}
 
+    c['logged_in'] = request.user.is_authenticated
+
+    print(c['logged_in'])
+
     return render(request, 'landing.html', c)
 
 def contact(request):

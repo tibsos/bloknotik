@@ -47,16 +47,7 @@
 
             <div class='top-nav'>
 
-                {% if profile %}
-                {% else %}
-    
-                    <a href="{% url 'user:login' %}">
-    
-                        Войти
-    
-                    </a>
-    
-                {% endif %}
+                {% include 'navs/top-nav.html' %}
     
             </div>
     
@@ -78,15 +69,31 @@
     
                         </h2>
         
-                        <a href="{% url 'user:register' %}">
-        
-                            <button>
-        
-                                Создайте блокнот
+                        {% if logged_in %}
+
+                            <a href="{% url 'app:home' %}">
+                
+                                <button>
             
-                            </button>
-        
-                        </a>
+                                    Создать блокнот
+                
+                                </button>
+            
+                            </a>
+
+                        {% else %}
+
+                            <a href="{% url 'user:register' %}">
+            
+                                <button>
+            
+                                    Создать блокнот
+                
+                                </button>
+            
+                            </a>
+
+                        {% endif %}
 
                     </div>
     
@@ -100,7 +107,11 @@
     
             </div>
     
-            {% include 'navs/bottom-nav.html' %}
+            <div class="bottom-nav">
+
+                {% include 'navs/bottom-nav.html' %}
+
+            </div>
             
         </div>
 
@@ -122,6 +133,7 @@
         }
 
     </style>
+
 
 
 

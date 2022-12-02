@@ -1,0 +1,67 @@
+<div class='left'>
+
+
+
+</div>
+
+
+<div class='right'>
+    
+    <div>
+
+        {% if logged_in %}
+
+                <a href="{% url 'app:home' %}">
+
+                    <div>
+            
+                        <!-- 
+                            
+                            SVG 
+                        
+                        -->
+            
+                        H
+            
+                    </div>
+            
+                </a>
+            
+                <a href="{% url 'app:home' %}">
+            
+                    <div>
+            
+                        <!-- 
+                            
+                            SVG 
+                        
+                        -->
+            
+                        H
+            
+                    </div>
+            
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {% else %}
+
+            <a href="{% url 'user:login' %}">
+
+                <div>
+
+                    В
+
+                </div>
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</div>

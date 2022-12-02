@@ -1,0 +1,170 @@
+{% for note in notes %}
+
+    <div class='note' id="{{ note.uid }}" hx-trigger="click target:.note," hx-get="{% url 'app:get-note' note.uid %} " hx-target=".current-note" style="background-color: {{ note.color }}">
+
+        <div class="contents">
+
+            <div class="images">
+
+                {% include 'components/note-images.html' %}
+
+            </div>
+
+            <span class="title" hx-get="{% url 'app:get-note' note.uid %} " hx-target=".current-note">
+
+                {{ note.title }}
+    
+            </span>
+
+            <span class="content" hx-get="{% url 'app:get-note' note.uid %} " hx-target=".current-note">
+
+                {{ note.content | safe }}
+
+            </span>
+
+        </div>
+
+        <div class="actions">
+
+            <div id="change-note-color-btn" onClick="changeColorInit(this)">
+
+                C
+
+            </div>
+
+            <div id="add-image" onClick="addImage()">
+
+                I
+
+                <form hx-encoding="multipart/form-data"
+                    hx-post="{% url 'app:add-image' note.uid %}"
+                    hx-target=".images"
+                >
+                    {% csrf_token %}
+
+                    <input type="file" name="file" id="image-file" hidden/>
+
+                    <button type="submit" hidden></button>
+
+                </form>
+
+            </div>
+
+            <div class="delete" hx-post="{% url 'app:delete-note' note.uid %}" hx-target='.notes'>
+    
+                D
+    
+            </div>
+    
+        </div>
+
+    </div>
+
+    
+
+{% endfor %}
+
+<script>
+
+
+    /* Note labels */
+
+    /* Note images */
+
+ 
+/* 
+    $('#image-file').change(function() {
+
+        $(this).siblings('button').click();
+
+    }) */
+
+    /* Note background */
+
+    let changeColorHTML = `
+
+        <div class="change-note-background-form">
+
+            <div class="colors">
+
+                <div class="color" id="red" onClick="changeColor(this)" style="background-color: red;"></div>
+
+            </div>
+
+
+            <div class="wallpapers">
+
+                <div class="wallpaper"></div>
+
+            </div>
+
+        </div>
+
+    `
+
+    var changeColorOpen = false;
+    var note;
+
+    function changeColorInit(e) {
+
+        note = e.parentNode.parentNode;
+
+        if (!$('.change-note-background-form').length) {
+
+            note.insertAdjacentHTML('afterend', changeColorHTML);
+
+        }
+
+        changeColorOpen = true;    $('body').click(function(e) {
+
+        if ($('.change-note-background-form').length) {
+
+            if (!($(e.target).is($('.change-note-background-form'))) && !($(e.target).is($('.colors'))) && !($(e.target).is($('.color'))) && !($(e.target).is($('#change-note-color-btn')))) {
+
+                $('.change-note-background-form').remove();
+
+                changeColorOpen = false;
+                
+            }
+
+        }
+
+    }) 
+        if ($('.change-note-background-form').length) {
+
+            if (!($(e.target).is($('.change-note-background-form'))) && !($(e.target).is($('.colors'))) && !($(e.target).is($('.color'))) && !($(e.target).is($('#change-note-color-btn')))) {
+
+                $('.change-note-background-form').remove();
+
+                changeColorOpen = false;
+                
+            }
+
+        }
+
+    }) 
+        
+
+
+    function changeColor(e) {
+
+        note.style.background = e.id;
+
+        $.ajax({
+
+            type: "POST",
+            url: "{% url 'app:change-note-color' %}",
+            data: {
+
+                'csrfmiddlewaretoken': "{{ csrf_token }}",
+                'uid': note.id,
+                'color': e.id,
+                
+
+            },
+
+        })
+
+    }
+
+</script>
