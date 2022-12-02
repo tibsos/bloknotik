@@ -9,10 +9,10 @@ def log_in(request):
 
     if request.method == 'POST':
 
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = authenticate(username = username, password = password)
+        user = authenticate(username = email, password = password)
 
         if user:
 
@@ -34,17 +34,17 @@ def register(request):
 
         name = request.POST.get('name')
 
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
-        user = User(username = username)
+        user = User(username = email)
         user.set_password(password)
         user.save()
 
         user.profile.name = name
         user.profile.save()
 
-        user = authenticate(username = username, password = password)
+        user = authenticate(username = email, password = password)
         login(request, user)
 
         return redirect('app:home')

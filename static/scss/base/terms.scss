@@ -1,0 +1,235 @@
+$theme-color: #E5E4E2;
+$text-color: #1E2330;
+
+html, body {
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    margin: 0;
+
+    background: $theme-color;
+
+    overflow-x: hidden;
+
+    font-size: 16px;
+
+    color: $text-color;
+}
+
+.main {
+
+    width: 100%;
+
+}
+
+.terms-nav {
+
+    position: fixed;
+    top: 70px;
+    left: 15px;
+
+    width: 30%;
+
+    float: left;
+
+    a {
+
+        text-decoration: none;
+        color: $text-color;
+
+    }
+
+    .pages {
+
+        position: absolute;
+        right: 0;
+
+        div {
+
+            position: relative;
+            right: 0;
+    
+            width: 350px;
+            height: 40px;
+    
+            display: flex;
+            align-items: center;
+    
+    
+    
+            margin-bottom: 15px;
+    
+            border-radius: 50px;
+    
+            box-shadow:  2px 2px 4px #b9b9b7,
+                            -2px -2px 4px #ffffff;
+    
+            cursor: pointer;
+    
+    
+            span {
+    
+                margin: 0 15px 0 15px;
+    
+            }
+    
+        }
+
+        div.current {
+
+            font-size: 15px;
+
+            box-shadow: inset 2px 2px 4px #b9b9b7,
+               inset -2px -2px 4px #ffffff;
+    
+        }
+
+    }
+
+
+}
+
+.content {
+
+    position: relative;
+    left: 60px;
+
+    width: 70%;
+
+    float: right;
+
+    .info {
+
+        width: 780px;
+
+        div {
+
+            position: relative;
+            right: 40px;
+
+            p {
+
+                margin-left: 40px;
+
+            }
+
+            ol { 
+
+                counter-reset: item; 
+
+            }
+
+            ol > li{ 
+
+                display: block;
+
+                margin: 15px 0 15px 0;
+
+                font-size: 21px;
+                font-weight: bold;
+            
+            }
+
+            ol > li:before { 
+
+                content: counters(item, ".") ". "; 
+                counter-increment: item;
+            
+            }
+
+            ol > li > ol > li {
+
+                font-size: 16px;
+                font-weight: normal;
+
+            }
+
+            ul > li {
+
+                margin: 10px 0 10px 0;
+
+            }
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 1220px) {
+
+    .terms-nav {
+
+        .pages {
+
+            div {
+
+                width: 300px;
+
+            }
+
+        }
+
+    }
+
+    .content {
+
+        .info {
+
+            width: 640px;
+    
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 1020px) {
+
+    .terms-nav {
+
+        .pages {
+
+            div {
+
+                width: 100%;
+
+            }
+
+        }
+
+    }
+
+    .content {
+
+        .info {
+
+            width: 88%;
+    
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .terms-nav {
+
+        .pages {
+
+            div {
+
+                width: 10px;
+
+            }
+
+        }
+
+    }
+
+}

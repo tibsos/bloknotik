@@ -1,0 +1,156 @@
+{% load static %}
+{% load compress %}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content = 'width=device-width, initial_scale=1.0' />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        
+        <title>
+            
+
+        </title>
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <link href="" rel="shortcut icon" />
+
+        {% compress css %}
+
+            <link rel="stylesheet" href="{% static 'scss/base/terms.scss' %}" type="text/x-scss">
+
+        {% endcompress %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </head>
+
+
+    <body>
+
+
+        <div class='terms-nav'>
+
+            <div class="pages">
+
+                <a href="{% url 'base:juridical' %}">
+        
+                    <div id='agreement'>
+            
+                        <span>
+                
+                            Договор-оферта
+                
+                        </span>
+                
+                    </div>
+
+                <a href="{% url 'base:privacy' %}">
+            
+                    <div id='privacy'>
+                
+                        <span>
+                
+                            Политика конфиденциальности
+                
+                        </span>
+                
+                    </div>
+                
+                </a>
+
+                <a href="{% url 'base:juridical' %}">
+
+                    <div id='juridical'>
+            
+                        <span>
+                
+                            Юридическая информация
+                
+                        </span>
+                
+                    </div>
+
+                </a>
+            
+                
+            
+                <div id='payment-safety'>
+            
+                    <span>
+            
+                        Безопасность онлайн платежей
+            
+                    </span>
+            
+                </div>
+            
+                <div id='data-safety'>
+            
+                    <span>
+            
+                        Безопасность данных
+            
+                    </span>
+            
+                </div>
+        
+            </div>
+        
+        </div>        
+
+        <div class="content">
+
+            <div class="info">
+
+                <h1>
+
+                    {{ info.title }}
+
+                </h1>
+
+                <div>
+
+                    {{ info.content | safe }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    <style>
+
+        @font-face {
+            
+            font-family: Comfortaa;
+            src: url("{% static 'fonts/Comfortaa.ttf' %}");
+        
+        }
+
+        body {
+
+            font-family: Comfortaa;
+
+        }
+
+    </style>
+
+    <script>
+
+        $('#{{ id }}').addClass('current');
+        $('#{{ id }}').parent('a').attr('href', '#');
+
+    </script>
+
+
+</html>

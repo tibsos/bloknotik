@@ -1,3 +1,6 @@
+$theme-color: #E5E4E2;
+$input-text-color: darkgrey;
+
 body, html {
 
     width: 100%;
@@ -6,12 +9,40 @@ body, html {
     padding: 0;
     margin: 0;
 
-    background: #EBEBEF;
+    background: $theme-color;
 
     font-family: Comfortaa;
 
 }
 
+button {
+
+    border: none;
+
+    font-family: Comfortaa;
+
+    cursor: pointer;
+
+}
+
+input {
+
+    font-family: Comfortaa;
+
+}
+
+input:focus {
+
+    outline: none;
+
+}
+
+[contenteditable][placeholder]:empty:before {
+
+    content: attr(placeholder);
+    color: darkslategray;
+
+}
 
 
 .top-nav {
@@ -25,17 +56,19 @@ body, html {
 
     border-radius: 50px;
 
-    background: #EBEBEF;
-    box-shadow:  3px 3px 10px #b5b5b8,
-                -3px -3px 10px #ffffff;    
+    background: $theme-color;
+    box-shadow:  2px 2px 4px #b9b9b7,
+             -2px -2px 4px #ffffff;
+
     display: flex;
     align-items: center;
 
     .toggle-side-nav {
 
+        width: 5%;
+
         width: 40px;
         height: 40px;
-
 
         border-radius: 50px;
 
@@ -46,11 +79,54 @@ body, html {
 
     .brand {
 
+        width: 15%;
+
         h1 {
 
             margin: 0;
 
         }
+
+    }
+
+    .search {
+
+        width: 40%;
+
+        display: flex;
+
+        justify-content: center;
+
+        input {
+
+            
+            width: 50%;
+            height: 30px;
+            
+            
+            border: none;
+            border-radius: 50px;
+
+            padding-left: 20px;
+
+            background: none;
+
+            box-shadow: inset 2px 2px 4px #b9b9b7,
+            inset -2px -2px 4px #ffffff;
+
+        }
+
+    }
+
+    .right-buttons {
+
+        width: 30%;
+
+    }
+
+    .profile {
+
+        width: 10%;
 
     }
 
@@ -61,10 +137,13 @@ body, html {
     position: relative;
     top: 60px;
 
-    width: 250px;
+    width: 45px;
 
     .pages {
 
+        position: relative;
+
+        width: 45px;
         
         .page {
 
@@ -75,146 +154,79 @@ body, html {
 
             border-radius: 50px;
 
-            background: #EBEBEF;
+            background: $theme-color;
 
             margin-bottom: 15px;
 
-            box-shadow:  2px 2px 4px #b3b3b3,
+            box-shadow:  2px 2px 4px #b9b9b7,
              -2px -2px 4px #ffffff;
 
             cursor: pointer;
 
-            transition: all 0.25s ease-in-out;
+            transition: all 0.5s ease-in-out;
 
             span {
 
                 margin: 0 0 0 20px;
 
-                display: none;
+                opacity: 0;
+
+                transition: none;
+
+            }  
+        
+            .edit-notepad-btn {
+
+                position: absolute;
+                right: 0;
+
+                opacity: 0;
+
+                transition: none;
 
             }
 
 
         }
 
-    }
+        .page.current {
 
-    .folder-form {
-
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100%;
-        height: 100%;
-
-        background: rgba(0, 0, 0 ,0.5);
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       
-        transition: all 0.25s ease-in-out;
-
-        z-index: -1;
-        opacity: 0;
-
-        .folder-form-wrapper {
-
-            height: auto;
-            width: 300px;
-
-            border-radius: 30px;
-            background: #EBEBEF;
-
-            padding: 15px;
-
-            .section-title {
-
-                position: relative;
-                bottom: 30px;
-                left: 5px;
-
-                font-weight: bold;
-
-                font-size: 20px;
-
-            }
-
-            .close-folder-form-btn {
-
-                position: relative;
-                left: 265px;
-                bottom: 0px;
-
-                width: 35px;
-                height: 35px;
-
-                border-radius: 50px;
-
-                box-shadow:  2px 2px 4px #b3b3b3,
-                    -2px -2px 4px #ffffff;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                cursor: pointer;
-
-            }
-            
-            .new-notepad {
-
-                position: relative;
-
-                left: 2.5%;
-
-                width: 95%;
-
-                height: 40px;
-
-                border-radius: 50px;
-
-                box-shadow:  2px 2px 4px #b3b3b3,
-                    -2px -2px 4px #ffffff;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                cursor: pointer;
-                
-           
-
-                span {
-
-                    font-size: 30px;
-                    
-
-                }
-
-            }
+            box-shadow: inset 2px 2px 4px #b9b9b7,
+                    inset -2px -2px 4px #ffffff;
 
         }
 
     }
-
 
 }
 
 .side-nav.open {
 
-    .page {
+    .pages {
 
-        width: 100%;
+        .page {
 
-        display: flex;
+            width: 250px;
+    
+            display: flex;
+    
+            align-items: center;
+    
+            span {
 
-        align-items: center;
+                opacity: 1;
 
-        span {
+                transition: 1.2s ease-in-out;
+        
+            }
 
-            display: block;
+            .edit-notepad-btn {
+
+                opacity: 1;
+
+                transition: all 1.2s ease-in-out
+
+            }
     
         }
 
@@ -222,10 +234,391 @@ body, html {
 
 }
 
-
 .main{
 
     position: relative;
-    left: 20%;
+
+    height: 80%;
+
+    bottom: 360px;
+
+    grid-template-rows: 40px;
+    
+
+    .create-note-field {
+
+        $btn-size: 40px;
+
+        position: relative;
+
+        width: 600px;
+        height: 60px;
+
+        margin: 0 auto;
+
+        background: $theme-color;
+
+        border-radius: 30px;
+
+        box-shadow:  2px 2px 4px #b9b9b7,
+             -2px -2px 4px #ffffff;
+
+        .condensed {
+
+            position: relative;
+            top: 10px;
+
+            display: flex;
+    
+            align-items: center;
+            
+            .btn {
+    
+                width: $btn-size;
+                height: $btn-size;
+    
+                border-radius: 50px;
+    
+                box-shadow:  2px 2px 4px #b9b9b7,
+                    -2px -2px 4px #ffffff;
+    
+                margin-right: 15px;
+    
+                display: inline-block;
+    
+                text-align: center;
+    
+                cursor: pointer;
+
+            }
+
+            .pin-note {
+
+                display: none;
+
+                margin: 0 10px 0 10px;
+
+                opacity: 0;
+                transition: 0.75s all ease-in-out;
+
+            }
+
+            .collapse-note-form {
+
+                display: none;
+
+                margin: 0 10px 0 10px;
+                
+                opacity: 0;
+                transition: 0.75s all ease-in-out;
+
+            }
+
+            .title {
+
+                position: relative;
+                left: 14px;
+                
+                height: 40px;
+                width: 75%;
+    
+                border-radius: 50px;
+    
+                box-shadow: inset 2px 2px 4px #b9b9b7,
+                    inset -2px -2px 4px #ffffff;
+    
+                display: flex;
+    
+                align-items: center;
+    
+                float: left;
+
+                cursor: text;
+
+    
+                input {
+
+                    width: 100%;
+                    margin-left: 10px;
+    
+                    border: none;
+                    background: none;
+
+                    font-size: 18px;
+
+                }     
+    
+            }
+    
+        }
+    
+        .side-buttons {
+            
+            position: relative;
+    
+            left: 32px;
+    
+            vertical-align: middle;
+
+            float: right;
+
+        }
+
+        #collapse-note-form {
+
+            display: none;
+            opacity: 0;
+
+        }
+
+        .condensed.expanded {
+
+            .pin-note {
+
+                display: block;
+    
+            }
+
+            .title {
+
+                width: 90%;
+
+                left: 0;
+
+                transition: none;
+
+            }
+
+            .side-buttons {
+
+                display: none;
+
+            }
+
+            .collapse-note-form {
+
+                display: block;
+    
+            }
+
+        }
+
+        .addon {
+
+            display: none;
+
+            opacity: 0;
+
+            transition: 1s all ease-in-out;
+
+            .buttons {
+                
+                position: relative;
+
+                top: 30px;
+
+                width: 100%;
+
+                display: flex;
+
+                justify-content: center;
+
+                button {
+
+                    width: $btn-size;
+                    height: $btn-size;
+
+                    display: inline-block;
+
+                    margin-right: 10px;
+
+                    cursor: pointer;
+
+                    border-radius: 50px;
+                    
+                    background: none;
+
+                    box-shadow:  2px 2px 4px #b9b9b7,
+                        -2px -2px 4px #ffffff;
+
+                }
+
+            }
+
+            .content {
+
+                position: relative;
+                top: 50px;
+                left: 2.75%;
+
+                width: 94.5%;
+                
+                height: 250px;
+
+                overflow: auto;
+
+                border-radius: 20px;
+            
+                box-shadow: inset 2px 2px 4px #b9b9b7,
+                        inset -2px -2px 4px #ffffff;
+
+                #new-note-content {
+
+                    margin: 20px;
+
+                    .checkbox-list {
+
+                        list-style-type: none;
+
+                    }
+
+                }
+                
+                #new-note-content:focus {
+
+                    outline: none;
+
+                }
+
+            }
+
+            .create-btn-wrapper {
+
+                position: relative;
+                left: 0;
+                top: 75px;
+                
+                width: 100%;
+
+                display: flex;
+
+                justify-content: center;
+
+                button {
+
+                    height: 40px;
+                    width: 250px;
+
+                    border-radius: 50px;
+
+                    background: none;
+
+                    box-shadow:  2px 2px 4px #b9b9b7,
+                        -2px -2px 4px #ffffff;
+
+                    font-size: 17px;
+
+                }
+
+            }
+
+        }
+
+        
+
+    }
+
+    .notes {
+
+        position: relative;
+        top: 50px;
+
+        height: 50%;
+        width: 100px;
+
+    }
+
+}
+
+.folder-form {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0 ,0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: all 0.25s ease-in-out;
+
+    z-index: -1;
+    opacity: 0;
+
+    .folder-form-wrapper {
+
+        height: auto;
+        width: 300px;
+
+        border-radius: 30px;
+        background: $theme-color;
+
+        padding: 15px;
+
+        .section-title {
+
+            position: relative;
+            bottom: 30px;
+            left: 5px;
+
+            font-weight: bold;transition: all 0.25s ease-in-out;
+
+        }
+
+        .close-folder-form-btn {
+
+            position: relative;
+            left: 265px;
+            bottom: 0px;
+
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50px;
+
+            box-shadow:  2px 2px 4px #b9b9b7,
+                -2px -2px 4px #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        
+        .new-notepad {
+
+            position: relative;
+
+            left: 2.5%;
+
+            width: 95%;
+
+            height: 40px;
+
+            border-radius: 50px;
+
+            box-shadow:  2px 2px 4px #b3b3b3,
+                -2px -2px 4px #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+
+            span {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+    }
 
 }

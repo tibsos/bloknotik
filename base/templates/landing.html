@@ -1,0 +1,247 @@
+{% load static %}
+{% load compress %}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content = 'width=device-width, initial_scale=1.0' />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        
+        <title>
+            
+
+        </title>
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <link href="" rel="shortcut icon" />
+
+        {% compress css %}
+
+            <link rel="stylesheet" href="{% static 'scss/base/landing.scss' %}" type="text/x-scss">
+            <link rel="stylesheet" href="{% static 'scss/base/navs/bottom-nav.scss' %}" type="text/x-scss">
+
+        {% endcompress %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <div class="circles">
+
+            <div class="small"></div>
+            <div class="medium"></div>
+            <div class="big"></div>
+
+        </div>
+
+        <div class="content">
+
+            <div class='top-nav'>
+
+                {% if profile %}
+                {% else %}
+    
+                    <a href="{% url 'user:login' %}">
+    
+                        Войти
+    
+                    </a>
+    
+                {% endif %}
+    
+            </div>
+    
+            <div class='main'>
+    
+                <div class='text-wrapper'>
+
+                    <div class="text">
+
+                        <h1>
+
+                            Не теряйте голову!
+    
+                        </h1>
+    
+                        <h2>
+    
+                            Создайте онлайн блокнот
+    
+                        </h2>
+        
+                        <a href="{% url 'user:register' %}">
+        
+                            <button>
+        
+                                Создайте блокнот
+            
+                            </button>
+        
+                        </a>
+
+                    </div>
+    
+                </div>
+
+                <div class="image">
+
+                    <img src="{% static 'img/base/онлайн_блокнот_заметки.png' %}" alt="Онлайн блокнот с заметками">
+
+                </div>
+    
+            </div>
+    
+            {% include 'navs/bottom-nav.html' %}
+            
+        </div>
+
+    </body>
+
+    <style>
+
+        @font-face {
+            
+            font-family: Comfortaa;
+            src: url("{% static 'fonts/Comfortaa.ttf' %}");
+        
+        }
+
+        body {
+
+            font-family: Comfortaa;
+
+        }
+
+    </style>
+
+
+
+        /* Circles animation */
+        colors = ['red', 'green', 'orange', 'purple', 'pink', 'yellow', '#f28500', 'cyan', 'blue', '#FF1744', '#1A237E', '#00C853']
+
+        function randomNumFromInterval(min, max) {
+
+            return Math.random() * (max - min) + min
+
+        }
+
+        /* Big circle */
+
+        bigSmall = false;
+
+        setInterval(function() {
+
+            color = colors[Math.floor(colors.length * Math.random())];
+
+            while (color === $('.big').css('background-color')){
+
+                color = colors[Math.floor(colors.length * Math.random())];
+   
+            }
+
+            $('.big').css('background-color', color)
+            
+            if (bigSmall === true) {
+
+                bigSmall = false;
+
+                scale = randomNumFromInterval(1, 1.15);
+
+                $('.big').css('transform', 'scale(' + scale + ')')
+
+            } else {
+
+                bigSmall = true;
+
+                scale = randomNumFromInterval(0.8, 0.95);
+
+                $('.big').css('transform', 'scale(' + scale + ')')
+
+            }
+
+
+        }, 2500)
+
+        mediumSmall = false;
+
+        setInterval(function() {
+
+            color = colors[Math.floor(colors.length * Math.random())];
+
+            while (color === $('.medium').css('background-color')){
+
+                color = colors[Math.floor(colors.length * Math.random())];
+   
+            }
+
+            $('.medium').css('background-color', color)
+            
+            if (mediumSmall === true) {
+
+                mediumSmall = false;
+
+                scale = randomNumFromInterval(1, 1.3);
+
+                $('.medium').css('transform', 'scale(' + scale + ')')
+
+            } else {
+
+                mediumSmall = true;
+
+                scale = randomNumFromInterval(0.65, 0.9);
+
+                $('.medium').css('transform', 'scale(' + scale + ')')
+
+            }
+
+
+        }, 1500)
+
+        smallSmall = false;
+
+        setInterval(function() {
+
+            color = colors[Math.floor(colors.length * Math.random())];
+
+            while (color === $('.small').css('background-color')){
+
+                color = colors[Math.floor(colors.length * Math.random())];
+   
+            }
+
+            $('.small').css('background-color', color)
+            
+            if (smallSmall === true) {
+
+                smallSmall = false;
+
+                scale = randomNumFromInterval(0.4, 0.95);
+
+                $('.small').css('transform', 'scale(' + scale + ')')
+
+            } else {
+
+                smallSmall = true;
+
+                scale = randomNumFromInterval(1, 1.5);
+
+                $('.small').css('transform', 'scale(' + scale + ')')
+
+            }
+
+
+        }, 750)
+
+
+    </script>
+
+</html>

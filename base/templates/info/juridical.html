@@ -1,0 +1,253 @@
+{% load static %}
+{% load compress %}
+
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content = 'width=device-width, initial_scale=1.0' />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        
+        <title>
+            
+            Юридическая информация | Блокнотик
+
+        </title>
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <link href="" rel="shortcut icon" />
+
+        {% compress css %}
+
+            <link rel="stylesheet" href="{% static 'scss/base/terms.scss' %}" type="text/x-scss">
+
+        {% endcompress %}
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    </head>
+
+
+    <body>
+
+        <div class='terms-nav'>
+
+            <div class="pages">
+
+                <a href="{% url 'base:juridical' %}">
+        
+                    <div>
+            
+                        <span>
+                
+                            Договор-оферта
+                
+                        </span>
+                
+                    </div>
+
+                <a href="{% url 'base:privacy' %}">
+            
+                    <div>
+                
+                        <span>
+                
+                            Политика конфиденциальности
+                
+                        </span>
+                
+                    </div>
+                
+                </a>
+
+                <a href="#">
+
+                    <div class='current'>
+            
+                        <span>
+                
+                            Юридическая информация
+                
+                        </span>
+                
+                    </div>
+
+                </a>
+            
+                
+            
+                <div id='payment-safety'>
+            
+                    <span>
+            
+                        Безопасность онлайн платежей
+            
+                    </span>
+            
+                </div>
+            
+                <div id='data-safety'>
+            
+                    <span>
+            
+                        Безопасность данных
+            
+                    </span>
+            
+                </div>
+        
+            </div>
+        
+        </div>        
+
+        <div class="content">
+
+                <table title='ИП Косяков Сергей Николаевич'>
+
+                    <tr>
+
+                        <th>
+
+                            ИП Косяков Сергей Николаевич
+
+                        </th>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>
+
+                            Юридический адрес
+
+                        </td>
+
+                        <td>
+
+                            Россия, г.Москва, ул. Островитянова, д.5, к.3, кв.13
+                            
+                        </td>
+
+                        <td>
+
+                            Почтовый адрес
+
+                        </td>
+
+                        <td>
+
+                            Россия, г.Москва, ул. Островитянова, д.5, к.3, кв.13
+                            
+                        </td>
+
+                        <td>
+
+                            Свидетельство о гос. регистрации
+
+                        </td>
+
+                        <td>
+
+                            
+                            
+                        </td>
+
+                        <td>
+
+                            ИНН
+
+                        </td>
+
+                        <td>
+
+                            
+                            
+                        </td>
+
+                        <td>
+
+                            ОРГН
+
+                        </td>
+
+                        <td>
+
+                            
+                            
+                        </td>
+
+                        <td>
+
+                            Расчетный счет
+
+                        </td>
+
+                        <td>
+
+                            
+
+                        </td>
+
+                        <td>
+
+                            Юридический адрес
+
+                        </td>
+
+                        <td>
+
+                            Бик
+                            
+                        </td>
+
+                        <td>
+
+                            
+
+                        </td>
+
+                        <td>
+
+                            
+                            
+                        </td>
+
+                    </tr>
+
+                </table>
+
+        </div>
+
+    </body>
+
+    <style>
+
+
+
+    </style>
+
+    <style>
+
+        @font-face {
+            
+            font-family: Comfortaa;
+            src: url("{% static 'fonts/Comfortaa.ttf' %}");
+        
+        }
+
+        body {
+
+            font-family: Comfortaa;
+
+        }
+
+    </style>
+
+
+</html>

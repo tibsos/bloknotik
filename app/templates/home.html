@@ -47,14 +47,14 @@
 
             </div>
 
-            <div class="search-field">
+            <div class="search">
 
                 <div class="icon">
 
 
                 </div>
 
-                <input type="text" name='query' class='search-query' />
+                <input type="text" name='query' />
 
             </div>
 
@@ -99,10 +99,9 @@
 
             <div class="pages">
 
-                <div class="page">
+                <div class="page current">
 
                     <!-- SVG -->
-
 
                     <span>
 
@@ -115,7 +114,7 @@
 
                 <div class="folders">
 
-                    {% include 'components/folder-list.html' %}
+                    {% include 'components/folders.html' %}
 
                 </div>
 
@@ -169,31 +168,170 @@
 
             <div class="create-note-field">
 
-                
-                <span>
+                <form>
 
-                    Я помню чудное мгновение...
+                    {% csrf_token %}
 
-                </span>
+                    <div class="condensed">
 
+                        <div class="btn pin-note">
 
-                <div class="add checklist">
+                            P
 
-                    C
+                        </div>
 
-                </div>
+                        <div class='title'>
+    
+                            <input type="text" id="new-note-title" placeholder='Я помню чудное мгновение...' />
+        
+                        </div>
+                        
+                        <div class="side-buttons">
+        
+                            <div class="btn checklist">
+        
+                                C
+            
+                            </div>
+            
+                            <div class="btn image">
+            
+                                I
+            
+                            </div>
+        
+                        </div>
 
-                <div class="add image">
+                        <div class='btn collapse-note-form'>
 
-                    I
+                            X
 
-                </div>
+                        </div>
+    
+                    </div>
+                    
+                    <div class="addon">
+    
+                        <div class="buttons">
 
-                <div class="create-note-field-expanded">
+                            <button id="bold" type="button">
 
+                                <b>
 
+                                    Ж
 
-                </div>
+                                </b>
+
+                            </button>
+
+                            <button id="italic" type="button">
+
+                                <i>
+
+                                    К
+
+                                </i>
+
+                            </button>
+
+                            <button id="underline" type="button">
+
+                                <u>
+
+                                    С
+
+                                </u>
+
+                            </button>
+
+                            <button id="strike" type="button">
+
+                                <s>
+
+                                    О
+
+                                </s>
+
+                            </button>
+
+                            <button id="ul" type="button">
+
+                                <i>
+
+                                    UL
+
+                                </i>
+
+                            </button>
+
+                            <button id="ol" type="button">
+
+                                <i>
+
+                                    OL
+
+                                </i>
+
+                            </button>
+
+                            <button id="cl" type="button">
+
+                                <i>
+
+                                    CL
+
+                                </i>
+
+                            </button>
+
+                            <button id="image" type="button">
+
+                                <i>
+
+                                    I
+
+                                </i>
+
+                            </button>
+
+                            <button id="style" type="button">
+
+                                <i>
+
+                                    S
+
+                                </i>
+
+                            </button>
+
+                        </div>
+
+                        <div class='content'>
+    
+                            <div contenteditable id="new-note-content" placeholder='Я помню чудное мгновение...'></div>
+        
+                        </div>
+
+                        <div class="create-btn-wrapper">
+
+                            <button class="create-note-btn" hx-post="{% url 'app:create-note' %}" hx-target='.notes'>
+    
+                                Создать
+        
+                            </button>
+
+                        </div>
+                        
+    
+                    </div>                    
+                    
+                </form>
+
+            </div>
+
+            <div class="notes">
+
+                x
 
             </div>
 
@@ -217,21 +355,228 @@
 
     <script>
 
-        $(".toggle-side-nav").click(function() {
+        /* RTE */
 
-            $(".side-nav").toggleClass('open');
+        $('#bold').click(function() {
+
+            document.execCommand('bold');
+            $('#new-note-content').focus();
+
+        });
+
+        $('#italic').click(function() {
+
+            document.execCommand('italic');
+            $('#new-note-content').focus();
+
+        });
+
+        $('#underline').click(function() {
+
+            document.execCommand('underline');
+            $('#new-note-content').focus();
+
+        });
+
+        $('#strike').click(function() {
+
+            document.execCommand('strikeThrough');
+            $('#new-note-content').focus();
+
+        });
+
+        $('#ul').click(function() {
+
+            document.execCommand('insertUnorderedList');
+            $('#new-note-content').focus();
+
+        });
+
+        $('#ol').click(function() {
+
+            document.execCommand('insertOrderedList');
+            $('#new-note-content').focus();
+
+        });
+
+        /* Checkbox list */
+
+        let checkListHTML = `
+
+            <ul class='checkbox-list'>
+            
+                <li class='checkbox-item'>
+
+                    <input type='checkbox' />
+
+                </li>
+
+            </ul>
+            
+        `
+
+        let checkBoxHTML = `
+        
+            <li class='checkbox-item'>
+
+                <input type='checkbox' />
+            
+            </li>
+
+        `
+
+        var range;
+
+        $(".content").on('keydown', function(e) {
+
+            range = window.getSelection().getRangeAt(0);
+            parentEl = range.commonAncestorContainer.parentNode;
+
+            if (parentEl.className === 'checkbox-item') {
+
+                if (e.keyCode === 13) {
+
+                    e.preventDefault();
+                    document.execCommand('insertHTML', false, checkBoxHTML);
+
+                }
+
+            }
+
+        })
+
+        $('#cl').click(function() {
+
+            range = window.getSelection().getRangeAt(0);
+            parentEl = range.commonAncestorContainer.parentNode;
+
+            if (parentEl.className !== 'checkbox-item' && parentEl.tagName === 'LI') {
+
+                document.execCommand('insertHTML', false, "<input type='checkbox' />");
+                $('#new-note-content').focus();
+
+            } else {
+
+                document.execCommand('insertHTML', false, checkListHTML);
+                $('#new-note-content').focus();
+
+            }
+
+            
+
+        });
+
+        /* Note synthesizer */
+
+        $('#new-note-title').focus(function() {
+
+            if (!$('.condensed').hasClass('expanded')){
+
+                $('.create-note-field').animate({
+
+                    height: 470,
+
+                }, 250)
+
+                $('.addon').show();
+
+                $('.condensed').addClass('expanded');
+                
+                $('.addon, .collapse-note-form, .pin-note').animate({
+
+                    opacity: 1,
+
+                })
+
+                $('#new-note-title').attr('placeholder', 'Заголовок');
+
+                $('#new-note-content').focus();
+
+            }
+
+        });
+
+        $('.collapse-note-form').click(function() {
+
+            $('.create-note-field').css({
+
+                height: 60,
+
+            })
+
+            $('.addon').hide();
+
+            $('.condensed').removeClass('expanded');
+
+            $('.addon, .collapse-note-form, .pin-note').animate({
+
+                opacity: 0,
+
+            })
+
+            $('#new-note-title').attr('placeholder', 'Я помню чудное мгновение...');
+
+        });
+
+        /* nav */
+
+        var navOpen = false;
+
+        let navBarAnimationTime = 500
+
+        function openNav() {
+
+            $('.side-nav').addClass('open');
+
+                $('.main').animate({
+
+                    marginLeft: 250,
+
+                }, navBarAnimationTime)
+
+        }
+
+        function closeNav() {
+
+            $('.side-nav').removeClass('open');
+
+                $('.main').animate({
+
+                    marginLeft: 0,
+
+                }, navBarAnimationTime)
+
+        }
+
+        $('.toggle-side-nav').click(function() {
+
+            ((navOpen === true) ? closeNav() : openNav());
+
+            navOpen = !navOpen;
 
         })
 
         $('.side-nav').on('mouseenter', function() {
 
-            $(".side-nav").addClass('open');
+            setTimeout(function() {
+
+                if (!navOpen) {
+
+                    openNav()
+    
+                }
+
+            }, 250)
 
         })
 
         $('.side-nav').on('mouseleave', function() {
 
-            $(".side-nav").removeClass('open');
+            if (!navOpen) {
+
+                closeNav()
+
+            }
 
         })
 
@@ -239,21 +584,21 @@
 
             $('.folder-form').css({
 
-                "opacity": 1,
-                "z-index": 5,
+                'opacity': 1,
+                'z-index': 5,
 
             })
 
         })
 
-        $('.close-folder-form-btn, .folder-form, .create-folder-btn').click(function(e) {
+        $('.close-folder-form-btn, .folder-form').click(function(e) {
 
             if (e.target == this){
 
                 $('.folder-form').css({
 
-                    "opacity": 0,
-                    "z-index": -1,
+                    'opacity': 0,
+                    'z-index': -1,
 
                 })
 

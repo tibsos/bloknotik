@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content = 'width=device-width, initial_scale=1.0' />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        
+        <title>
+            ie=edge
+
+        </title>
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <link href="" rel="shortcut icon" />
+
+    </head>
+
+
+    <body>
+        
+        <div class='login-form'>
+
+
+            <form method='POST'>
+                
+                {% csrf_token %}
+
+                <div class='fields'>
+
+
+                    <div class='email'>
+    
+                        <input type="text" name='email' placeholder='Электронная почта'>
+    
+                    </div>
+    
+                    <div class='password'>
+    
+                        <input type="text" name='password' placeholder='Пароль'>
+    
+                    </div>
+    
+                </div>
+
+                <button type='submit'>
+
+                    Войти
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+    </body>
+
+</html>

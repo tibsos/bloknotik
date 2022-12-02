@@ -30,6 +30,8 @@ class Folder(m.Model):
 
     title = m.CharField(max_length = 500)
 
+    color = m.CharField(max_length = 7)
+
     created_at = m.DateTimeField(auto_now_add = True)
     updated_at = m.DateTimeField(auto_now = True)
 
@@ -102,6 +104,9 @@ class Note(m.Model):
 
     uid = m.UUIDField(default = u4)
 
+    title = m.CharField(max_length = 1000)
+    content = m.TextField()
+
     background_color = m.CharField(max_length = 7)
     background_image = m.ForeignKey(Background, on_delete = m.DO_NOTHING, null = True)
 
@@ -111,6 +116,8 @@ class Note(m.Model):
 
     archived = m.BooleanField(default = False)
     deleted = m.BooleanField(default = False)
+
+    premium = m.BooleanField(default = False)
 
     created_at = m.DateTimeField(auto_now_add = True)
     updated_at = m.DateTimeField(auto_now = True)
