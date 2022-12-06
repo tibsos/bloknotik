@@ -1,5 +1,7 @@
 $theme-color: #E5E4E2;
+$text-color: #1E2330;
 $input-text-color: darkgrey;
+
 
 body, html {
 
@@ -40,7 +42,7 @@ input:focus {
 [contenteditable][placeholder]:empty:before {
 
     content: attr(placeholder);
-    color: darkslategray;
+    color: grey;
 
 }
 
@@ -57,8 +59,8 @@ input:focus {
     border-radius: 50px;
 
     background: $theme-color;
-    box-shadow:  2px 2px 4px #b9b9b7,
-             -2px -2px 4px #ffffff;
+    box-shadow:  1px 1px 4px #b9b9b7,
+             -1px -1px 4px #ffffff;
 
     display: flex;
     align-items: center;
@@ -111,8 +113,8 @@ input:focus {
 
             background: none;
 
-            box-shadow: inset 2px 2px 4px #b9b9b7,
-            inset -2px -2px 4px #ffffff;
+            box-shadow: inset 1px 1px 4px #b9b9b7,
+            inset -1px -1px 4px #ffffff;
 
         }
 
@@ -158,8 +160,8 @@ input:focus {
 
             margin-bottom: 15px;
 
-            box-shadow:  2px 2px 4px #b9b9b7,
-             -2px -2px 4px #ffffff;
+            box-shadow:  1px 1px 4px #b9b9b7,
+             -1px -1px 4px #ffffff;
 
             cursor: pointer;
 
@@ -191,8 +193,8 @@ input:focus {
 
         .page.current {
 
-            box-shadow: inset 2px 2px 4px #b9b9b7,
-                    inset -2px -2px 4px #ffffff;
+            box-shadow: inset 1px 1px 4px #b9b9b7,
+                    inset -1px -1px 4px #ffffff;
 
         }
 
@@ -242,7 +244,7 @@ input:focus {
 
     bottom: 170px;
 
-    grid-template-rows: 40px;
+    overflow-y: visible;
     
 
     .create-note-field {
@@ -260,10 +262,10 @@ input:focus {
 
         border-radius: 30px;
 
-        box-shadow:  2px 2px 4px #b9b9b7,
-             -2px -2px 4px #ffffff;
+        box-shadow:  1px 1px 4px #b9b9b7,
+             -1px -1px 4px #ffffff;
 
- 
+        transition: all 0.25s ease-in-out;
 
         .condensed {
 
@@ -281,8 +283,8 @@ input:focus {
     
                 border-radius: 50px;
     
-                box-shadow:  2px 2px 4px #b9b9b7,
-                    -2px -2px 4px #ffffff;
+                box-shadow:  1px 1px 4px #b9b9b7,
+                    -1px -1px 4px #ffffff;
     
                 margin-right: 15px;
     
@@ -326,8 +328,8 @@ input:focus {
     
                 border-radius: 50px;
     
-                box-shadow: inset 2px 2px 4px #b9b9b7,
-                    inset -2px -2px 4px #ffffff;
+                box-shadow: inset 1px 1px 4px #b9b9b7,
+                    inset -1px -1px 4px #ffffff;
     
                 display: flex;
     
@@ -411,6 +413,8 @@ input:focus {
 
             opacity: 0;
 
+            
+
             transition: 1s all ease-in-out;
 
             .buttons {
@@ -440,8 +444,63 @@ input:focus {
                     
                     background: none;
 
-                    box-shadow:  2px 2px 4px #b9b9b7,
-                        -2px -2px 4px #ffffff;
+                    box-shadow:  1px 1px 4px #b9b9b7,
+                        -1px -1px 4px #ffffff;
+
+                }
+
+            }
+
+            .new-note-style {
+
+                position: absolute;
+                bottom: 50px;
+
+                height: 110px;
+                width: 500px;
+
+                display: none;
+
+                border: 1px solid blue;
+                border-radius: 999px;
+
+                div {
+
+
+
+                }
+
+                .colors {
+
+                    height: 40%;
+                    width: 100%;
+
+                    margin: 20px 15px 0 15px;
+
+                    div {
+
+                        width: 35px;
+                        height: 35px;
+
+                        display: inline-block;
+
+                        margin-right: 15px;
+
+                        cursor: pointer;
+
+                        border-radius: 50px;
+
+                        box-shadow:  1px 1px 4px #b9b9b7,
+                        -1px -1px 4px #ffffff;
+
+                    }
+
+                }
+
+                .wallpapers {
+
+                    height: 60%;
+                    width: 100%;
 
                 }
 
@@ -459,10 +518,13 @@ input:focus {
 
                 overflow: auto;
 
+                cursor: text;
+
                 border-radius: 20px;
             
-                box-shadow: inset 2px 2px 4px #b9b9b7,
-                        inset -2px -2px 4px #ffffff;
+                box-shadow: inset 1px 1px 4px #b9b9b7,
+                        inset -1px -1px 4px #ffffff;
+
 
                 #new-note-content {
 
@@ -505,8 +567,8 @@ input:focus {
 
                     background: none;
 
-                    box-shadow:  2px 2px 4px #b9b9b7,
-                        -2px -2px 4px #ffffff;
+                    box-shadow:  1px 1px 4px #b9b9b7,
+                        -1px -1px 4px #ffffff;
 
                     font-size: 17px;
 
@@ -529,23 +591,35 @@ input:focus {
         height: 80%;
         width: 100%;
 
-
-
         .note {
 
             position: relative;
 
             width: 250px;
-            min-height: 120px;
+            height: 120px;
 
             display: inline-block;
 
-            margin: 0 20px 0 0;
+            margin: 0 30px 30px 0;
 
             border-radius: 30px;
 
-            box-shadow:  4px 4px 15px #b9b9b7,
-                        -4px -4px 15px #ffffff;
+            box-shadow:  2px 2px 10px #b9b9b7,
+                        -2px -2px 10px #ffffff;
+
+            .contents {
+
+                height: 50px;
+
+                .title {
+
+                    position: absolute;
+
+                    margin: 0;
+    
+                }
+
+            }
 
 
             cursor: pointer;
@@ -569,8 +643,8 @@ input:focus {
 
                     border-radius: 100px;
                     
-                    box-shadow:  2px 2px 4px #b9b9b7,
-                        -2px -2px 4px #ffffff;
+                    box-shadow:  1px 1px 4px #b9b9b7,
+                        -1px -1px 4px #ffffff;
 
 
                 }
@@ -604,8 +678,8 @@ input:focus {
 
                     border-radius: 100px;
                     
-                    box-shadow:  2px 2px 4px #b9b9b7,
-                        -2px -2px 4px #ffffff;
+                    box-shadow:  1px 1px 4px #b9b9b7,
+                        -1px -1px 4px #ffffff;
 
                     cursor: pointer;
 
@@ -676,8 +750,8 @@ input:focus {
 
             border-radius: 50px;
 
-            box-shadow:  2px 2px 4px #b9b9b7,
-                -2px -2px 4px #ffffff;
+            box-shadow:  1px 1px 4px #b9b9b7,
+                -1px -1px 4px #ffffff;
 
             display: flex;
             justify-content: center;
@@ -697,8 +771,8 @@ input:focus {
 
             border-radius: 50px;
 
-            box-shadow:  2px 2px 4px #b3b3b3,
-                -2px -2px 4px #ffffff;
+            box-shadow:  1px 1px 4px #b3b3b3,
+                -1px -1px 4px #ffffff;
 
             display: flex;
             justify-content: center;

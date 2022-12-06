@@ -1,0 +1,90 @@
+
+
+<body>
+    
+    <div>
+
+        <div class="updates">
+
+            <div>
+
+                <button>
+
+                    Уведомлять меня когда доработка будет доделана и запущена 
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <h1>
+
+                Хотите помочь проекту?
+
+            </h1>
+
+            <h2>
+
+                Ваше пожертвование используется для ниже перечисленных доработок Блокнотика 
+
+            </h2>
+
+            <div>
+
+                <div>
+
+                    <ul>
+
+                        {% for feature in features %}
+
+                            <li>
+
+                                <span class='title'>
+
+                                    {{ feature.title }}
+
+                                </span>
+
+
+                                <span class='description'>
+
+                                    {{ feature.description }}
+
+                                </span>
+
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <button>
+                
+                Пожертвовать
+                
+            </button>
+
+        </div>
+
+        <div>
+
+            <div>
+
+                <img src="{% static 'img/pay/donate.jpg' %}" alt="Помочь Блокнотику (пожертвование)">
+
+            </div>
+
+        </div>
+
+       
+
+    </div>
+
+</body>

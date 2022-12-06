@@ -83,7 +83,7 @@
 
     let changeColorHTML = `
 
-        <div class="change-note-background-form">
+        <div class="note-style">
 
             <div class="colors">
 
@@ -115,7 +115,9 @@
 
         }
 
-        changeColorOpen = true;    $('body').click(function(e) {
+        changeColorOpen = true;    
+        
+        $('body').click(function(e) {
 
         if ($('.change-note-background-form').length) {
 

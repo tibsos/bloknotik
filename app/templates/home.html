@@ -288,26 +288,58 @@
 
                             </button>
 
-                            <button id="image" type="button">
-
-                                <i>
+                            <button id="add-image" type="button">
 
                                     I
 
-                                </i>
+                            </button>
+
+                            <form hx-encoding="multipart/form-data" 
+                                hx-post=""
+                                hx-target=".new-note-images">
+
+                                {% csrf_token %}
+
+                                <input type="file" name='image' id='add-image-field' hidden>
+
+                                <button type="submit" style="display: none;"></button>
+
+                            </form>
+
+                            <button id="new-note-style-btn" type="button">
+
+                                S
 
                             </button>
 
-                            <button id="style" type="button">
+                            <div class="new-note-style">
 
-                                <i>
+                                <input type="text" name="color" id="note-color" hidden>
 
-                                    S
+                                <div class="colors">
 
-                                </i>
+                                    <div class="new-note-color" id="#E5E4E2"></div>
+                    
+                                    <div class="new-note-color" id="#00FFFF" style="background-color: #00FFFF;"></div>
+                                    <div class="new-note-color" id="#AB4B52" style="background-color: #AB4B52 ;"></div>
+                    
+                                </div>
+                    
+                    
+                                <div class="wallpapers">
+                    
+                                    <div class="wallpaper"></div>
+                    
+                                </div>
 
-                            </button>
+                            </div>
 
+                        </div>
+
+                        <div class="new-note-images">
+
+                            {% include 'components/note-images.html' %}
+ 
                         </div>
 
                         <div class='content'>
@@ -366,12 +398,6 @@
 
     <script>
 
-        function addImage() {
-
-            $('#image-file').click()
-
-        }
-
         document.body.addEventListener('htmx:configRequest', (event) => {
 
             event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
@@ -381,6 +407,40 @@
         $('#new-note-content').change(function() {
 
             $('#new-note-content-input').val(($('#new-note-content').html()))
+
+        })
+
+        /* Note functions */
+
+        /* Color */
+
+        $('#new-note-style-btn').click(function() {
+
+            $('.new-note-style').show();
+
+        })
+
+        var color;
+
+        $('.new-note-color').click(function() {
+
+            color = $(this).attr('id');
+
+            $('.create-note-field').css(
+
+                'background-color', color,
+
+            )
+
+            /* Theme color condition */
+
+            $('#note-color').val(color);
+
+        })
+
+        $('#add-image').click(function() {
+
+            $('#add-image-field').click();
 
         })
 
@@ -454,7 +514,7 @@
 
         `
 
-        var range;
+        var range, parentEl;
 
         $(".content").on('keydown', function(e) {
 
@@ -464,9 +524,12 @@
             if (parentEl.className === 'checkbox-item') {
 
                 if (e.keyCode === 13) {
+                    
+                    setTimeout(function () {
 
-                    e.preventDefault();
-                    document.execCommand('insertHTML', false, checkBoxHTML);
+                        document.execCommand('insertHTML', false, "<input type='checkbox' />");
+
+                    }, 1)
 
                 }
 
@@ -501,11 +564,11 @@
 
             if (!$('.condensed').hasClass('expanded')){
 
-                $('.create-note-field').animate({
+                $('.create-note-field').css({
 
                     height: 470,
-
-                }, 250)
+    
+                })
 
                 $('.addon').show();
 

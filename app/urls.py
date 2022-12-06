@@ -13,6 +13,7 @@ urlpatterns = [
 htmx_urlpatterns = [
 
     path('create-folder/', create_folder, name = 'create-folder'),
+    path('get-folder/<uuid:uid>/', get_folder, name = 'get-folder'),
     path('edit-folder/<uuid:uid>/', edit_folder, name = 'edit-folder'),
     path('delete-folder/<uuid:uid>/', delete_folder, name = 'delete-folder'),
 

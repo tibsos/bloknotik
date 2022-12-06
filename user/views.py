@@ -5,6 +5,15 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import *
 
+
+# Profile
+
+def profile(request):
+
+    return render(request, 'profile/profile.html')
+
+# Auth
+
 def log_in(request):
 
     if request.method == 'POST':
